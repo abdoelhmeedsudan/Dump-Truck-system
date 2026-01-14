@@ -1,0 +1,17 @@
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Domain\bin\Debug\net8.0\DumpTruckManagementSystem.Domain.deps.json
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Domain\bin\Debug\net8.0\DumpTruckManagementSystem.Domain.runtimeconfig.json
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Domain\bin\Debug\net8.0\DumpTruckManagementSystem.Domain.dll
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Domain\bin\Debug\net8.0\DumpTruckManagementSystem.Domain.pdb
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Domain\bin\Debug\net8.0\DumpTruckManagementSystem.Shared.dll
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Domain\bin\Debug\net8.0\DumpTruckManagementSystem.Shared.pdb
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Domain\obj\Debug\net8.0\DumpTruckManagementSystem.Domain.csproj.AssemblyReference.cache
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Domain\obj\Debug\net8.0\DumpTruckManagementSystem.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Domain\obj\Debug\net8.0\DumpTruckManagementSystem.Domain.AssemblyInfoInputs.cache
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Domain\obj\Debug\net8.0\DumpTruckManagementSystem.Domain.AssemblyInfo.cs
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Domain\obj\Debug\net8.0\DumpTruckManagementSystem.Domain.csproj.CoreCompileInputs.cache
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Domain\obj\Debug\net8.0\DumpTruc.58189B91.Up2Date
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Domain\obj\Debug\net8.0\DumpTruckManagementSystem.Domain.dll
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Domain\obj\Debug\net8.0\refint\DumpTruckManagementSystem.Domain.dll
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Domain\obj\Debug\net8.0\DumpTruckManagementSystem.Domain.pdb
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Domain\obj\Debug\net8.0\DumpTruckManagementSystem.Domain.genruntimeconfig.cache
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Domain\obj\Debug\net8.0\ref\DumpTruckManagementSystem.Domain.dll

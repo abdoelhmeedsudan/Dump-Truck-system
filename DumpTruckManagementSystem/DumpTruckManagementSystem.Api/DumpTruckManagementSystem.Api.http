@@ -1,0 +1,6 @@
+@DumpTruckManagementSystem.Api_HostAddress = http://localhost:5004
+
+GET {{DumpTruckManagementSystem.Api_HostAddress}}/swagger/
+Accept: application/json
+
+###

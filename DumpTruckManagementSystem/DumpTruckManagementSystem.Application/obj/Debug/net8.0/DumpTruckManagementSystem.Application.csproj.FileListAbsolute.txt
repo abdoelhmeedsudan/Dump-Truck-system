@@ -1,0 +1,14 @@
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Application\bin\Debug\net8.0\DumpTruckManagementSystem.Application.deps.json
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Application\bin\Debug\net8.0\DumpTruckManagementSystem.Application.runtimeconfig.json
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Application\bin\Debug\net8.0\DumpTruckManagementSystem.Application.dll
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Application\bin\Debug\net8.0\DumpTruckManagementSystem.Application.pdb
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Application\obj\Debug\net8.0\DumpTruckManagementSystem.Application.csproj.AssemblyReference.cache
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Application\obj\Debug\net8.0\DumpTruckManagementSystem.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Application\obj\Debug\net8.0\DumpTruckManagementSystem.Application.AssemblyInfoInputs.cache
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Application\obj\Debug\net8.0\DumpTruckManagementSystem.Application.AssemblyInfo.cs
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Application\obj\Debug\net8.0\DumpTruckManagementSystem.Application.csproj.CoreCompileInputs.cache
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Application\obj\Debug\net8.0\DumpTruckManagementSystem.Application.dll
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Application\obj\Debug\net8.0\refint\DumpTruckManagementSystem.Application.dll
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Application\obj\Debug\net8.0\DumpTruckManagementSystem.Application.pdb
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Application\obj\Debug\net8.0\DumpTruckManagementSystem.Application.genruntimeconfig.cache
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Application\obj\Debug\net8.0\ref\DumpTruckManagementSystem.Application.dll

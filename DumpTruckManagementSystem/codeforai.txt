@@ -1,0 +1,513 @@
+﻿// ==================================================================================================
+// DumpTruckManagementSystem - MVP Domain Entities (Single File)
+// --------------------------------------------------------------------------------------------------
+// الهدف: أقل نسخة MVP لنظام إدارة القلابات والورديات + المصاريف + الصيانة + أسعار النقلات.
+// الملف يحتوي على:
+// - Enums
+// - Entities: DumpTruck, Driver, Site, Shift, ShiftTruckEntry, ExpenseType, ShiftExpense,
+//            MaintenanceType, MaintenanceRecord, RevenueRate
+// --------------------------------------------------------------------------------------------------
+// ملاحظة 1: هذا الملف يفترض وجود EntityBase<Guid> داخل DumpTruckManagementSystem.Domain.Common.Base
+//           ويحتوي على Id (وربما CreatedAt/UpdatedAt إذا كانت موجودة عندك).
+// ملاحظة 2: استخدمت DateOnly للتواريخ (مناسب لـ .NET 6+). إذا لا ترغب، استبدله بـ DateTime.
+// ==================================================================================================
+
+using System;
+using System.Collections.Generic;
+using DumpTruckManagementSystem.Domain.Common.Base;
+
+namespace DumpTruckManagementSystem.Domain.Enums
+{
+    /// <summary>
+    /// حالة القلاب التشغيلية (بديل أفضل من bool IsActive لأنه يغطي أكثر من حالة).
+    /// </summary>
+    public enum DumpTruckStatus
+    {
+        /// <summary>شغال / متاح للعمل</summary>
+        Active = 1,
+
+        /// <summary>غير نشط / متوقف</summary>
+        Inactive = 2,
+
+        /// <summary>تحت الصيانة / غير متاح للتشغيل</summary>
+        UnderMaintenance = 3
+    }
+}
+
+namespace DumpTruckManagementSystem.Domain.Entities
+{
+    using DumpTruckManagementSystem.Domain.Enums;
+
+    // =============================================================================================
+    // 1) DumpTruck (القلاب)
+    // =============================================================================================
+    /// <summary>
+    /// يمثل القلاب داخل الأسطول (Master Data).
+    /// يُستخدم في الورديات اليومية والصيانة والتقارير.
+    /// </summary>
+    public class DumpTruck : EntityBase<Guid>
+    {
+        /// <summary>
+        /// رقم القلاب الداخلي (معرّف تشغيلي فريد داخل الشركة).
+        /// مثال: DT-001
+        /// </summary>
+        public string TruckNumber { get; set; } = default!;
+
+        /// <summary>
+        /// رقم اللوحة (مفيد للتمييز الرسمي).
+        /// </summary>
+        public string PlateNumber { get; set; } = default!;
+
+        /// <summary>
+        /// نوع القلاب (MVP كـ string).
+        /// لاحقًا يمكن تحويله إلى Enum أو Lookup Table لتفادي أخطاء الإدخال.
+        /// مثال: "Small" / "Medium" / "Large"
+        /// </summary>
+        public string TruckType { get; set; } = default!;
+
+        /// <summary>
+        /// موديل القلاب (اختياري).
+        /// </summary>
+        public string? Model { get; set; }
+
+        /// <summary>
+        /// الحمولة القصوى (بالطن أو حسب معيارك).
+        /// </summary>
+        public decimal LoadCapacity { get; set; }
+
+        /// <summary>
+        /// الحالة التشغيلية للقلاب (شغال/متوقف/تحت الصيانة).
+        /// </summary>
+        public DumpTruckStatus Status { get; set; } = DumpTruckStatus.Active;
+
+        /// <summary>
+        /// ملاحظات عامة عن القلاب.
+        /// </summary>
+        public string? Notes { get; set; }
+
+        // -------------------------
+        // العلاقات (Navigation)
+        // -------------------------
+
+        /// <summary>
+        /// كل إدخالات هذا القلاب في الورديات (اليومية).
+        /// </summary>
+        public ICollection<ShiftTruckEntry> ShiftEntries { get; set; } = new List<ShiftTruckEntry>();
+
+        /// <summary>
+        /// سجلات الصيانة الخاصة بهذا القلاب.
+        /// </summary>
+        public ICollection<MaintenanceRecord> MaintenanceRecords { get; set; } = new List<MaintenanceRecord>();
+    }
+
+    // =============================================================================================
+    // 2) Driver (السائق)
+    // =============================================================================================
+    /// <summary>
+    /// يمثل السائق (Master Data).
+    /// يُربط بالورديات اليومية لمعرفة من قاد القلاب خلال اليوم.
+    /// </summary>
+    public class Driver : EntityBase<Guid>
+    {
+        /// <summary>
+        /// الاسم الكامل للسائق.
+        /// </summary>
+        public string FullName { get; set; } = default!;
+
+        /// <summary>
+        /// رقم الجوال (اختياري).
+        /// </summary>
+        public string? PhoneNumber { get; set; }
+
+        /// <summary>
+        /// رقم الهوية/الإقامة (اختياري).
+        /// </summary>
+        public string? NationalId { get; set; }
+
+        /// <summary>
+        /// حالة السائق (نشط/غير نشط).
+        /// </summary>
+        public bool IsActive { get; set; } = true;
+
+        /// <summary>
+        /// ملاحظات عن السائق.
+        /// </summary>
+        public string? Notes { get; set; }
+
+        // -------------------------
+        // العلاقات (Navigation)
+        // -------------------------
+
+        /// <summary>
+        /// إدخالات السائق في الورديات (أي الأيام التي عمل بها).
+        /// </summary>
+        public ICollection<ShiftTruckEntry> ShiftEntries { get; set; } = new List<ShiftTruckEntry>();
+    }
+
+    // =============================================================================================
+    // 3) Site (الموقع/المنجم)
+    // =============================================================================================
+    /// <summary>
+    /// يمثل موقع التشغيل (منجم/موقع/منطقة).
+    /// يسهّل الفلترة بالتاريخ والموقع وإعداد أسعار النقلات لكل موقع.
+    /// </summary>
+    public class Site : EntityBase<Guid>
+    {
+        /// <summary>
+        /// اسم الموقع.
+        /// مثال: "منجم 1"
+        /// </summary>
+        public string Name { get; set; } = default!;
+
+        /// <summary>
+        /// رمز مختصر للموقع (اختياري).
+        /// مثال: M1
+        /// </summary>
+        public string? Code { get; set; }
+
+        /// <summary>
+        /// ملاحظات خاصة بالموقع (اختياري).
+        /// </summary>
+        public string? Notes { get; set; }
+
+        // -------------------------
+        // العلاقات (Navigation)
+        // -------------------------
+
+        /// <summary>
+        /// الورديات المسجلة في هذا الموقع.
+        /// </summary>
+        public ICollection<Shift> Shifts { get; set; } = new List<Shift>();
+
+        /// <summary>
+        /// أسعار النقلات (Rate per Trip) الخاصة بهذا الموقع عبر الزمن.
+        /// </summary>
+        public ICollection<RevenueRate> RevenueRates { get; set; } = new List<RevenueRate>();
+    }
+
+    // =============================================================================================
+    // 4) Shift (رأس الوردية اليومية)
+    // =============================================================================================
+    /// <summary>
+    /// يمثل يوم التشغيل في موقع معين.
+    /// عادة يكون هناك Shift واحد لكل (تاريخ + موقع) لتسهيل المتابعة اليومية.
+    /// </summary>
+    public class Shift : EntityBase<Guid>
+    {
+        /// <summary>
+        /// تاريخ الوردية (اليوم).
+        /// </summary>
+        public DateOnly ShiftDate { get; set; }
+
+        /// <summary>
+        /// الموقع الذي تم التشغيل فيه في هذا اليوم.
+        /// </summary>
+        public Guid SiteId { get; set; }
+
+        /// <summary>
+        /// كيان الموقع المرتبط.
+        /// </summary>
+        public Site Site { get; set; } = default!;
+
+        /// <summary>
+        /// ملاحظات عامة عن اليوم (اختياري).
+        /// </summary>
+        public string? Notes { get; set; }
+
+        // -------------------------
+        // العلاقات (Navigation)
+        // -------------------------
+
+        /// <summary>
+        /// تفاصيل القلابات التي عملت في هذه الوردية (سطر لكل قلاب).
+        /// </summary>
+        public ICollection<ShiftTruckEntry> TruckEntries { get; set; } = new List<ShiftTruckEntry>();
+    }
+
+    // =============================================================================================
+    // 5) ShiftTruckEntry (تفاصيل القلاب داخل الوردية)
+    // =============================================================================================
+    /// <summary>
+    /// يمثل سطر القلاب في يوم محدد:
+    /// - القلاب
+    /// - السائق (اختياري)
+    /// - عدد النقلات
+    /// - ملاحظات
+    /// + مصاريف مرتبطة بهذا السطر
+    /// </summary>
+    public class ShiftTruckEntry : EntityBase<Guid>
+    {
+        /// <summary>
+        /// مرجع الوردية (اليوم/الموقع).
+        /// </summary>
+        public Guid ShiftId { get; set; }
+
+        /// <summary>
+        /// كيان الوردية المرتبط.
+        /// </summary>
+        public Shift Shift { get; set; } = default!;
+
+        /// <summary>
+        /// مرجع القلاب الذي تم تشغيله.
+        /// </summary>
+        public Guid DumpTruckId { get; set; }
+
+        /// <summary>
+        /// كيان القلاب المرتبط.
+        /// </summary>
+        public DumpTruck DumpTruck { get; set; } = default!;
+
+        /// <summary>
+        /// مرجع السائق (اختياري - قد يكون غير محدد).
+        /// </summary>
+        public Guid? DriverId { get; set; }
+
+        /// <summary>
+        /// كيان السائق المرتبط (اختياري).
+        /// </summary>
+        public Driver? Driver { get; set; }
+
+        /// <summary>
+        /// عدد النقلات المنجزة في هذا اليوم لهذا القلاب.
+        /// </summary>
+        public int TripsCount { get; set; }
+
+        /// <summary>
+        /// سعر النقلة (اختياري).
+        /// إذا رغبت بتثبيت السعر وقت الإدخال بدل الرجوع لجدول RevenueRates.
+        /// </summary>
+        public decimal? TripUnitPrice { get; set; }
+
+        /// <summary>
+        /// ملاحظات تشغيلية لهذا القلاب في هذا اليوم.
+        /// </summary>
+        public string? Notes { get; set; }
+
+        // -------------------------
+        // العلاقات (Navigation)
+        // -------------------------
+
+        /// <summary>
+        /// المصاريف التي حدثت لهذا القلاب في هذا اليوم (جاز/بنشر/قطع...).
+        /// </summary>
+        public ICollection<ShiftExpense> Expenses { get; set; } = new List<ShiftExpense>();
+    }
+
+    // =============================================================================================
+    // 6) ExpenseType (نوع المصروف)
+    // =============================================================================================
+    /// <summary>
+    /// أنواع المصاريف التشغيلية (Master Data).
+    /// مثال: جاز، بنشر، قطع غيار...
+    /// </summary>
+    public class ExpenseType : EntityBase<Guid>
+    {
+        /// <summary>
+        /// اسم نوع المصروف.
+        /// </summary>
+        public string Name { get; set; } = default!;
+
+        /// <summary>
+        /// هل هذا النوع متاح للاستخدام أم لا.
+        /// </summary>
+        public bool IsActive { get; set; } = true;
+
+        /// <summary>
+        /// ملاحظات (اختياري).
+        /// </summary>
+        public string? Notes { get; set; }
+
+        // -------------------------
+        // العلاقات (Navigation)
+        // -------------------------
+
+        /// <summary>
+        /// المصاريف اليومية المرتبطة بهذا النوع.
+        /// </summary>
+        public ICollection<ShiftExpense> ShiftExpenses { get; set; } = new List<ShiftExpense>();
+    }
+
+    // =============================================================================================
+    // 7) ShiftExpense (مصروف يومي داخل الوردية)
+    // =============================================================================================
+    /// <summary>
+    /// يمثل مصروفًا مرتبطًا بسطر تشغيل (قلاب + يوم).
+    /// </summary>
+    public class ShiftExpense : EntityBase<Guid>
+    {
+        /// <summary>
+        /// مرجع سطر القلاب في الوردية.
+        /// </summary>
+        public Guid ShiftTruckEntryId { get; set; }
+
+        /// <summary>
+        /// كيان سطر القلاب المرتبط.
+        /// </summary>
+        public ShiftTruckEntry ShiftTruckEntry { get; set; } = default!;
+
+        /// <summary>
+        /// نوع المصروف (جاز/بنشر...).
+        /// </summary>
+        public Guid ExpenseTypeId { get; set; }
+
+        /// <summary>
+        /// كيان نوع المصروف المرتبط.
+        /// </summary>
+        public ExpenseType ExpenseType { get; set; } = default!;
+
+        /// <summary>
+        /// قيمة المصروف.
+        /// </summary>
+        public decimal Amount { get; set; }
+
+        /// <summary>
+        /// ملاحظات/وصف (اختياري).
+        /// مثال: "جاز - محطة X"
+        /// </summary>
+        public string? Notes { get; set; }
+    }
+
+    // =============================================================================================
+    // 8) MaintenanceType (نوع الصيانة)
+    // =============================================================================================
+    /// <summary>
+    /// أنواع الصيانة (Master Data).
+    /// مثال: تغيير زيت، كهرباء، دبرياج...
+    /// </summary>
+    public class MaintenanceType : EntityBase<Guid>
+    {
+        /// <summary>
+        /// اسم نوع الصيانة.
+        /// </summary>
+        public string Name { get; set; } = default!;
+
+        /// <summary>
+        /// هل النوع متاح للاستخدام.
+        /// </summary>
+        public bool IsActive { get; set; } = true;
+
+        /// <summary>
+        /// ملاحظات (اختياري).
+        /// </summary>
+        public string? Notes { get; set; }
+
+        // -------------------------
+        // العلاقات (Navigation)
+        // -------------------------
+
+        /// <summary>
+        /// سجلات الصيانة المرتبطة بهذا النوع.
+        /// </summary>
+        public ICollection<MaintenanceRecord> MaintenanceRecords { get; set; } = new List<MaintenanceRecord>();
+    }
+
+    // =============================================================================================
+    // 9) MaintenanceRecord (سجل صيانة)
+    // =============================================================================================
+    /// <summary>
+    /// يمثل عملية صيانة واحدة للقلاب.
+    /// تُستخدم لتجميع مصاريف الصيانة ضمن التقارير الشهرية.
+    /// </summary>
+    public class MaintenanceRecord : EntityBase<Guid>
+    {
+        /// <summary>
+        /// تاريخ الصيانة.
+        /// </summary>
+        public DateOnly MaintenanceDate { get; set; }
+
+        /// <summary>
+        /// القلاب الذي تمت صيانته.
+        /// </summary>
+        public Guid DumpTruckId { get; set; }
+
+        /// <summary>
+        /// كيان القلاب المرتبط.
+        /// </summary>
+        public DumpTruck DumpTruck { get; set; } = default!;
+
+        /// <summary>
+        /// نوع الصيانة (تغيير زيت/كهرباء...).
+        /// </summary>
+        public Guid MaintenanceTypeId { get; set; }
+
+        /// <summary>
+        /// كيان نوع الصيانة المرتبط.
+        /// </summary>
+        public MaintenanceType MaintenanceType { get; set; } = default!;
+
+        /// <summary>
+        /// تكلفة قطع الغيار.
+        /// </summary>
+        public decimal PartsCost { get; set; }
+
+        /// <summary>
+        /// تكلفة العمل/الأجرة.
+        /// </summary>
+        public decimal LaborCost { get; set; }
+
+        /// <summary>
+        /// إجمالي التكلفة.
+        /// ملاحظة: يمكن جعلها محسوبة بدل تخزينها:
+        /// TotalCost = PartsCost + LaborCost
+        /// </summary>
+        public decimal TotalCost { get; set; }
+
+        /// <summary>
+        /// اسم الفني/الورشة التي نفذت الصيانة (اختياري).
+        /// </summary>
+        public string? DoneBy { get; set; }
+
+        /// <summary>
+        /// ملاحظات إضافية (اختياري).
+        /// </summary>
+        public string? Notes { get; set; }
+    }
+
+    // =============================================================================================
+    // 10) RevenueRate (سعر النقلة)
+    // =============================================================================================
+    /// <summary>
+    /// سعر النقلة حسب الموقع عبر الزمن.
+    /// الهدف: دعم اختلاف سعر النقلة من شهر لآخر أو من موقع لآخر.
+    /// </summary>
+    public class RevenueRate : EntityBase<Guid>
+    {
+        /// <summary>
+        /// الموقع الذي يطبق عليه هذا السعر.
+        /// </summary>
+        public Guid SiteId { get; set; }
+
+        /// <summary>
+        /// كيان الموقع المرتبط.
+        /// </summary>
+        public Site Site { get; set; } = default!;
+
+        /// <summary>
+        /// تاريخ بداية تطبيق السعر.
+        /// </summary>
+        public DateOnly EffectiveFrom { get; set; }
+
+        /// <summary>
+        /// قيمة النقلة الواحدة.
+        /// </summary>
+        public decimal RatePerTrip { get; set; }
+
+        /// <summary>
+        /// رمز العملة (MVP كـ نص).
+        /// مثال: SAR, USD
+        /// </summary>
+        public string CurrencyCode { get; set; } = "SAR";
+
+        /// <summary>
+        /// سعر الصرف إلى SAR (اختياري).
+        /// لو كانت العملة غير SAR وتحتاج تحويل في التقرير الشهري.
+        /// </summary>
+        public decimal? ExchangeRateToSar { get; set; }
+
+        /// <summary>
+        /// ملاحظات (اختياري).
+        /// مثال: "تحديث أسعار يناير"
+        /// </summary>
+        public string? Notes { get; set; }
+    }
+}

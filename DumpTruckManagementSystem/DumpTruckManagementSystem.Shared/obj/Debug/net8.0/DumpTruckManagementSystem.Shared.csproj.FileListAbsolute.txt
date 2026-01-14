@@ -1,0 +1,14 @@
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Shared\bin\Debug\net8.0\DumpTruckManagementSystem.Shared.deps.json
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Shared\bin\Debug\net8.0\DumpTruckManagementSystem.Shared.runtimeconfig.json
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Shared\bin\Debug\net8.0\DumpTruckManagementSystem.Shared.dll
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Shared\bin\Debug\net8.0\DumpTruckManagementSystem.Shared.pdb
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Shared\obj\Debug\net8.0\DumpTruckManagementSystem.Shared.csproj.AssemblyReference.cache
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Shared\obj\Debug\net8.0\DumpTruckManagementSystem.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Shared\obj\Debug\net8.0\DumpTruckManagementSystem.Shared.AssemblyInfoInputs.cache
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Shared\obj\Debug\net8.0\DumpTruckManagementSystem.Shared.AssemblyInfo.cs
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Shared\obj\Debug\net8.0\DumpTruckManagementSystem.Shared.csproj.CoreCompileInputs.cache
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Shared\obj\Debug\net8.0\DumpTruckManagementSystem.Shared.dll
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Shared\obj\Debug\net8.0\refint\DumpTruckManagementSystem.Shared.dll
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Shared\obj\Debug\net8.0\DumpTruckManagementSystem.Shared.pdb
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Shared\obj\Debug\net8.0\DumpTruckManagementSystem.Shared.genruntimeconfig.cache
+D:\Projects\DumpTruckManagementSystem\DumpTruckManagementSystem.Shared\obj\Debug\net8.0\ref\DumpTruckManagementSystem.Shared.dll

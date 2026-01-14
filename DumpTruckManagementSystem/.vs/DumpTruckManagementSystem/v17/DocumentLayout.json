@@ -1,0 +1,65 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Projects\\Dump\\DumpTruckManagementSystem\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A75F1B51-DE15-4C01-8759-142E48107309}|DumpTruckManagementSystem.Api\\DumpTruckManagementSystem.Api.csproj|d:\\projects\\dump\\dumptruckmanagementsystem\\dumptruckmanagementsystem.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A75F1B51-DE15-4C01-8759-142E48107309}|DumpTruckManagementSystem.Api\\DumpTruckManagementSystem.Api.csproj|solutionrelative:dumptruckmanagementsystem.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A75F1B51-DE15-4C01-8759-142E48107309}|DumpTruckManagementSystem.Api\\DumpTruckManagementSystem.Api.csproj|d:\\projects\\dump\\dumptruckmanagementsystem\\dumptruckmanagementsystem.api\\controllers\\drivercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A75F1B51-DE15-4C01-8759-142E48107309}|DumpTruckManagementSystem.Api\\DumpTruckManagementSystem.Api.csproj|solutionrelative:dumptruckmanagementsystem.api\\controllers\\drivercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Projects\\Dump\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Api\\Program.cs",
+              "RelativeDocumentMoniker": "DumpTruckManagementSystem.Api\\Program.cs",
+              "ToolTip": "D:\\Projects\\Dump\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Api\\Program.cs",
+              "RelativeToolTip": "DumpTruckManagementSystem.Api\\Program.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T13:20:13.737Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DriverController.cs",
+              "DocumentMoniker": "D:\\Projects\\Dump\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Api\\Controllers\\DriverController.cs",
+              "RelativeDocumentMoniker": "DumpTruckManagementSystem.Api\\Controllers\\DriverController.cs",
+              "ToolTip": "D:\\Projects\\Dump\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Api\\Controllers\\DriverController.cs",
+              "RelativeToolTip": "DumpTruckManagementSystem.Api\\Controllers\\DriverController.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAYwDAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T12:11:45.28Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
