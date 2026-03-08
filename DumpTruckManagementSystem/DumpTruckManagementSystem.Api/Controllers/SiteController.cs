@@ -3,12 +3,14 @@ using DumpTruckManagementSystem.Application.Features.SiteFeature.Commands.Create
 using DumpTruckManagementSystem.Application.Features.SiteFeature.Commands.Delete;
 using DumpTruckManagementSystem.Application.Features.SiteFeature.Commands.Update;
 using DumpTruckManagementSystem.Application.Features.SiteFeature.Queries.Query;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DumpTruckManagementSystem.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class SiteController : BaseApiController<SiteController>
     {
         [HttpGet]

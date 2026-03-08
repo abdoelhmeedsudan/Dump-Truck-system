@@ -3,13 +3,14 @@ using DumpTruckManagementSystem.Application.Features.DriverFeature.Commands.Crea
 using DumpTruckManagementSystem.Application.Features.DriverFeature.Commands.Delete;
 using DumpTruckManagementSystem.Application.Features.DriverFeature.Commands.Update;
 using DumpTruckManagementSystem.Application.Features.DriverFeature.Queries.Query;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
 
 namespace DumpTruckManagementSystem.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class DriverController : BaseApiController<DriverController>
     {
         [HttpGet]

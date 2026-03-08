@@ -3,12 +3,15 @@ using DumpTruckManagementSystem.Application.Features.ExpenseTypeFeature.Commands
 using DumpTruckManagementSystem.Application.Features.ExpenseTypeFeature.Commands.Delete;
 using DumpTruckManagementSystem.Application.Features.ExpenseTypeFeature.Commands.Update;
 using DumpTruckManagementSystem.Application.Features.ExpenseTypeFeature.Queries.Query;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DumpTruckManagementSystem.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
+
     public class ExpenseTypeController : BaseApiController<ExpenseTypeController>
     {
         [HttpGet]

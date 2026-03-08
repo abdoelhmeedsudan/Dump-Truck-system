@@ -8,7 +8,7 @@ export function useSites() {
   useEffect(() => {
     async function load() {
       try {
-        const data = await siteApi.getAll()
+        const data = await siteApi.getAll({ pageSize: 1000 })
         setSites(extractArrayFromResponse(data))
       } catch (err) {
         console.error('Error loading sites:', err)
@@ -29,7 +29,7 @@ export function useDrivers() {
   useEffect(() => {
     async function load() {
       try {
-        const data = await driverApi.getAll()
+        const data = await driverApi.getAll({ pageSize: 1000 })
         setDrivers(extractArrayFromResponse(data))
       } catch (err) {
         console.error('Error loading drivers:', err)
@@ -50,7 +50,7 @@ export function useDumpTrucks() {
   useEffect(() => {
     async function load() {
       try {
-        const data = await dumpTruckApi.getAll()
+        const data = await dumpTruckApi.getAll({ pageSize: 1000 })
         setDumpTrucks(extractArrayFromResponse(data))
       } catch (err) {
         console.error('Error loading dump trucks:', err)
@@ -71,7 +71,7 @@ export function useExpenseTypes() {
   useEffect(() => {
     async function load() {
       try {
-        const data = await expenseTypeApi.getAll({ isActive: true })
+        const data = await expenseTypeApi.getAll({ isActive: true, pageSize: 1000 })
         setExpenseTypes(extractArrayFromResponse(data))
       } catch (err) {
         console.error('Error loading expense types:', err)
@@ -92,7 +92,7 @@ export function useMaintenanceTypes() {
   useEffect(() => {
     async function load() {
       try {
-        const data = await maintenanceTypeApi.getAll({ isActive: true })
+        const data = await maintenanceTypeApi.getAll({ isActive: true, pageSize: 1000 })
         setMaintenanceTypes(extractArrayFromResponse(data))
       } catch (err) {
         console.error('Error loading maintenance types:', err)

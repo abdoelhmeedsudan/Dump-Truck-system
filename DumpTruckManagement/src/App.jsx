@@ -18,6 +18,8 @@ import MaintenanceTypes from './pages/MaintenanceTypes'
 import MaintenanceRecords from './pages/MaintenanceRecords'
 import RevenueRates from './pages/RevenueRates'
 import AuthPage from './pages/AuthPage'
+import AddUser from './pages/AddUser'
+import ChangeUsername from './pages/ChangeUsername'
 
 function App() {
   return (
@@ -38,6 +40,8 @@ function App() {
           <Route path="maintenance-types" element={<MaintenanceTypes />} />
           <Route path="maintenance-records" element={<MaintenanceRecords />} />
           <Route path="revenue-rates" element={<RevenueRates />} />
+          <Route path="users/add" element={<AddUser />} />
+          <Route path="profile/change-username" element={<ChangeUsername />} />
         </Route>
 
         <Route path="*" element={<Navigate to="/" replace />} />

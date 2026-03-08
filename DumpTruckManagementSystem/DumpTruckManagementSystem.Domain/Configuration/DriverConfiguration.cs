@@ -13,9 +13,7 @@ namespace DumpTruckManagementSystem.Domain.Configuration
 
             builder.HasKey(x => x.Id);
 
-            builder.Property(e => e.Id)
-                   .HasDefaultValueSql(GuidConstant.SequentialGuid)
-                   .ValueGeneratedOnAdd();
+            builder.Property(e => e.Id).HasDefaultValueSql(GuidConstant.SequentialGuid).ValueGeneratedOnAdd();
 
             builder.Property(e => e.NationalId)
                    .IsRequired()

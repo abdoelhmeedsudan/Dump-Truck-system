@@ -3,12 +3,14 @@ using DumpTruckManagementSystem.Application.Features.MaintenanceRecordFeature.Co
 using DumpTruckManagementSystem.Application.Features.MaintenanceRecordFeature.Commands.Delete;
 using DumpTruckManagementSystem.Application.Features.MaintenanceRecordFeature.Commands.Update;
 using DumpTruckManagementSystem.Application.Features.MaintenanceRecordFeature.Queries.Query;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DumpTruckManagementSystem.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class MaintenanceRecordController : BaseApiController<MaintenanceRecordController>
     {
         [HttpGet]

@@ -3,12 +3,15 @@ using DumpTruckManagementSystem.Application.Features.ShiftFeature.Commands.Creat
 using DumpTruckManagementSystem.Application.Features.ShiftFeature.Commands.Delete;
 using DumpTruckManagementSystem.Application.Features.ShiftFeature.Commands.Update;
 using DumpTruckManagementSystem.Application.Features.ShiftFeature.Queries.Query;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DumpTruckManagementSystem.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
+
     public class ShiftController : BaseApiController<ShiftController>
     {
         [HttpGet]

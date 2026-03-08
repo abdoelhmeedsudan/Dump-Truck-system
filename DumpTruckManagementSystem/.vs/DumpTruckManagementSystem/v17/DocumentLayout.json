@@ -1,14 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Projects\\Dump\\DumpTruckManagementSystem\\",
+  "WorkspaceRootPath": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A75F1B51-DE15-4C01-8759-142E48107309}|DumpTruckManagementSystem.Api\\DumpTruckManagementSystem.Api.csproj|d:\\projects\\dump\\dumptruckmanagementsystem\\dumptruckmanagementsystem.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A75F1B51-DE15-4C01-8759-142E48107309}|DumpTruckManagementSystem.Api\\DumpTruckManagementSystem.Api.csproj|solutionrelative:dumptruckmanagementsystem.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A75F1B51-DE15-4C01-8759-142E48107309}|DumpTruckManagementSystem.Api\\DumpTruckManagementSystem.Api.csproj|d:\\projects\\dump-truck-system\\dumptruckmanagementsystem\\dumptruckmanagementsystem.api\\controllers\\drivercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A75F1B51-DE15-4C01-8759-142E48107309}|DumpTruckManagementSystem.Api\\DumpTruckManagementSystem.Api.csproj|solutionrelative:dumptruckmanagementsystem.api\\controllers\\drivercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A75F1B51-DE15-4C01-8759-142E48107309}|DumpTruckManagementSystem.Api\\DumpTruckManagementSystem.Api.csproj|d:\\projects\\dump\\dumptruckmanagementsystem\\dumptruckmanagementsystem.api\\controllers\\drivercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A75F1B51-DE15-4C01-8759-142E48107309}|DumpTruckManagementSystem.Api\\DumpTruckManagementSystem.Api.csproj|solutionrelative:dumptruckmanagementsystem.api\\controllers\\drivercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{33E7CF33-5F23-4F20-B078-F0B7745AB831}|DumpTruckManagementSystem.Infrastructure\\DumpTruckManagementSystem.Infrastructure.csproj|d:\\projects\\dump-truck-system\\dumptruckmanagementsystem\\dumptruckmanagementsystem.infrastructure\\extension\\configureservicecontainer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33E7CF33-5F23-4F20-B078-F0B7745AB831}|DumpTruckManagementSystem.Infrastructure\\DumpTruckManagementSystem.Infrastructure.csproj|solutionrelative:dumptruckmanagementsystem.infrastructure\\extension\\configureservicecontainer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A75F1B51-DE15-4C01-8759-142E48107309}|DumpTruckManagementSystem.Api\\DumpTruckManagementSystem.Api.csproj|d:\\projects\\dump-truck-system\\dumptruckmanagementsystem\\dumptruckmanagementsystem.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A75F1B51-DE15-4C01-8759-142E48107309}|DumpTruckManagementSystem.Api\\DumpTruckManagementSystem.Api.csproj|solutionrelative:dumptruckmanagementsystem.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A75F1B51-DE15-4C01-8759-142E48107309}|DumpTruckManagementSystem.Api\\DumpTruckManagementSystem.Api.csproj|d:\\projects\\dump-truck-system\\dumptruckmanagementsystem\\dumptruckmanagementsystem.api\\controllers\\baseapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A75F1B51-DE15-4C01-8759-142E48107309}|DumpTruckManagementSystem.Api\\DumpTruckManagementSystem.Api.csproj|solutionrelative:dumptruckmanagementsystem.api\\controllers\\baseapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,27 +43,54 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Projects\\Dump\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Api\\Program.cs",
-              "RelativeDocumentMoniker": "DumpTruckManagementSystem.Api\\Program.cs",
-              "ToolTip": "D:\\Projects\\Dump\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Api\\Program.cs",
-              "RelativeToolTip": "DumpTruckManagementSystem.Api\\Program.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Title": "DriverController.cs",
+              "DocumentMoniker": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Api\\Controllers\\DriverController.cs",
+              "RelativeDocumentMoniker": "DumpTruckManagementSystem.Api\\Controllers\\DriverController.cs",
+              "ToolTip": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Api\\Controllers\\DriverController.cs",
+              "RelativeToolTip": "DumpTruckManagementSystem.Api\\Controllers\\DriverController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-14T13:20:13.737Z",
+              "WhenOpened": "2026-03-08T21:57:01.808Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "DriverController.cs",
-              "DocumentMoniker": "D:\\Projects\\Dump\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Api\\Controllers\\DriverController.cs",
-              "RelativeDocumentMoniker": "DumpTruckManagementSystem.Api\\Controllers\\DriverController.cs",
-              "ToolTip": "D:\\Projects\\Dump\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Api\\Controllers\\DriverController.cs",
-              "RelativeToolTip": "DumpTruckManagementSystem.Api\\Controllers\\DriverController.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAYwDAAAAAAAAAAAAAAAA==",
+              "Title": "ConfigureServiceContainer.cs",
+              "DocumentMoniker": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Infrastructure\\Extension\\ConfigureServiceContainer.cs",
+              "RelativeDocumentMoniker": "DumpTruckManagementSystem.Infrastructure\\Extension\\ConfigureServiceContainer.cs",
+              "ToolTip": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Infrastructure\\Extension\\ConfigureServiceContainer.cs",
+              "RelativeToolTip": "DumpTruckManagementSystem.Infrastructure\\Extension\\ConfigureServiceContainer.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAB8AAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-14T12:11:45.28Z"
+              "WhenOpened": "2026-03-08T21:53:13.888Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Api\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "DumpTruckManagementSystem.Api\\Controllers\\AuthController.cs",
+              "ToolTip": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Api\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "DumpTruckManagementSystem.Api\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAL8AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-08T21:25:07.576Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BaseApiController.cs",
+              "DocumentMoniker": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Api\\Controllers\\BaseApiController.cs",
+              "RelativeDocumentMoniker": "DumpTruckManagementSystem.Api\\Controllers\\BaseApiController.cs",
+              "ToolTip": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Api\\Controllers\\BaseApiController.cs",
+              "RelativeToolTip": "DumpTruckManagementSystem.Api\\Controllers\\BaseApiController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAEMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-08T21:20:11.265Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -3,7 +3,8 @@ import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import FormField from '../components/FormField'
 import Modal from '../components/Modal'
-import { shiftApi, extractArrayFromResponse } from '../services/apiService'
+import Pagination from '../components/Pagination'
+import { shiftApi, extractPaginatedData, extractObjectFromResponse } from '../services/apiService'
 import { useSites } from '../hooks/useLookups'
 import '../pages/styles.css'
 
@@ -21,6 +22,11 @@ export default function Shifts() {
   const [error, setError] = useState(null)
   const { sites } = useSites()
 
+  // Pagination state
+  const [currentPage, setCurrentPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(1)
+  const [pageSize] = useState(10)
+
   const initialValues = {
     shiftDate: '',
     siteId: '',
@@ -29,14 +35,19 @@ export default function Shifts() {
 
   useEffect(() => {
     loadData()
-  }, [])
+  }, [currentPage])
 
   async function loadData() {
     try {
       setLoading(true)
       setError(null)
-      const data = await shiftApi.getAll()
-      setItems(extractArrayFromResponse(data))
+      const data = await shiftApi.getAll({
+        pageNumber: currentPage,
+        pageSize: pageSize
+      })
+      const paginatedData = extractPaginatedData(data)
+      setItems(paginatedData.items)
+      setTotalPages(paginatedData.totalPages)
     } catch (err) {
       setError(err.message || 'حدث خطأ أثناء تحميل البيانات')
       console.error('Error loading shifts:', err)
@@ -65,8 +76,18 @@ export default function Shifts() {
 
   async function handleEdit(item) {
     try {
-      const fullItem = await shiftApi.getById(item.id)
-      setEditingItem(fullItem)
+      const response = await shiftApi.getById(item.id)
+      const fullItem = extractObjectFromResponse(response)
+
+      // Ensure we have the required fields with proper defaults
+      const itemToEdit = {
+        id: fullItem?.id || item.id,
+        shiftDate: fullItem?.shiftDate || item.shiftDate || '',
+        siteId: fullItem?.siteId || item.siteId || '',
+        notes: fullItem?.notes || item.notes || ''
+      }
+
+      setEditingItem(itemToEdit)
       setIsModalOpen(true)
     } catch (err) {
       setError(err.message || 'حدث خطأ أثناء تحميل البيانات')
@@ -96,6 +117,13 @@ export default function Shifts() {
     setError(null)
   }
 
+  // Handler for page change
+  function handlePageChange(newPage) {
+    if (newPage >= 1 && newPage <= totalPages) {
+      setCurrentPage(newPage)
+    }
+  }
+
   function getSiteName(siteId) {
     const site = sites.find(s => s.id === siteId)
     return site ? site.name : siteId
@@ -106,63 +134,69 @@ export default function Shifts() {
       <h2>الورديات — Shifts</h2>
 
       {error && (
-        <div style={{ 
-          padding: '1rem', 
-          background: 'rgba(239, 68, 68, 0.1)', 
-          color: 'var(--error)', 
-          borderRadius: '8px', 
-          marginBottom: '1rem',
-          border: '1px solid var(--error)'
-        }}>
+        <div className="badge badge-error" style={{ display: 'block', marginBottom: '1rem', padding: '1rem' }}>
           {error}
         </div>
       )}
 
       <div className="table-section">
-        <div className="table-section-title" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div className="table-section-title">
           <span>قائمة الورديات</span>
-          <button onClick={handleAdd} disabled={loading}>إضافة وردية جديدة</button>
+          <button onClick={handleAdd} disabled={loading} className="primary">
+            + إضافة وردية جديدة
+          </button>
         </div>
-        {loading ? (
-          <div style={{ textAlign: 'center', padding: '3rem', color: 'var(--muted)' }}>
-            جاري التحميل...
-          </div>
-        ) : (
-          <table className="table">
-            <thead>
-              <tr>
-                <th>التاريخ</th>
-                <th>الموقع</th>
-                <th>ملاحظات</th>
-                <th>الإجراءات</th>
-              </tr>
-            </thead>
-            <tbody>
-              {items.length === 0 ? (
+
+        <div className="table-container">
+          {loading ? (
+            <div style={{ textAlign: 'center', padding: '3rem', color: 'var(--muted)' }}>
+              <div className="loading"></div> جاري التحميل...
+            </div>
+          ) : (
+            <table className="table">
+              <thead>
                 <tr>
-                  <td colSpan="4" style={{ textAlign: 'center', padding: '3rem', color: 'var(--muted)' }}>
-                    لا توجد بيانات
-                  </td>
+                  <th>التاريخ</th>
+                  <th>الموقع</th>
+                  <th>ملاحظات</th>
+                  <th>الإجراءات</th>
                 </tr>
-              ) : (
-                items.map((it) => (
-                  <tr key={it.id}>
-                    <td>{it.shiftDate}</td>
-                    <td>{getSiteName(it.siteId)}</td>
-                    <td>{it.notes}</td>
-                    <td>
-                      <div style={{ display: 'flex', gap: '0.5rem' }}>
-                        <button onClick={() => handleEdit(it)} style={{ padding: '0.5rem 1rem', fontSize: '0.85rem' }}>تعديل</button>
-                        <button onClick={() => handleDelete(it.id)} style={{ padding: '0.5rem 1rem', fontSize: '0.85rem', background: 'var(--error)' }}>حذف</button>
-                      </div>
+              </thead>
+              <tbody>
+                {items.length === 0 ? (
+                  <tr>
+                    <td colSpan="4" style={{ textAlign: 'center', padding: '3rem', color: 'var(--muted)' }}>
+                      لا توجد بيانات
                     </td>
                   </tr>
-                ))
-              )}
-            </tbody>
-          </table>
-        )}
+                ) : (
+                  items.map((it) => (
+                    <tr key={it.id}>
+                      <td>{it.shiftDate}</td>
+                      <td>{getSiteName(it.siteId)}</td>
+                      <td>{it.notes}</td>
+                      <td>
+                        <div style={{ display: 'flex', gap: '0.5rem' }}>
+                          <button onClick={() => handleEdit(it)} className="secondary" style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem' }}>تعديل</button>
+                          <button onClick={() => handleDelete(it.id)} className="secondary" style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem', color: 'var(--error)', borderColor: 'var(--error)' }}>حذف</button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
+          )}
+        </div>
       </div>
+
+      {!loading && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
+      )}
 
       <Modal
         isOpen={isModalOpen}
@@ -187,16 +221,16 @@ export default function Shifts() {
                 </FormField>
               </div>
 
-              <div className="form-grid" style={{ gridTemplateColumns: '1fr' }}>
-                <FormField name="notes" type="textarea" label="ملاحظات / Notes" />
+              <div className="form-grid" style={{ gridTemplateColumns: '1fr', marginTop: '1rem' }}>
+                <FormField name="notes" type="textarea" label="ملاحظات / Notes" rows="3" />
               </div>
 
               <div className="actions">
-                <button type="submit" disabled={isSubmitting}>
-                  {editingItem ? 'حفظ التعديلات' : 'إضافة وردية'}
-                </button>
-                <button type="button" onClick={handleClose} style={{ background: 'var(--muted)' }}>
+                <button type="button" onClick={handleClose} className="secondary">
                   إلغاء
+                </button>
+                <button type="submit" disabled={isSubmitting} className="primary">
+                  {editingItem ? 'حفظ التعديلات' : 'إضافة وردية'}
                 </button>
               </div>
             </Form>
@@ -206,3 +240,4 @@ export default function Shifts() {
     </div>
   )
 }
+

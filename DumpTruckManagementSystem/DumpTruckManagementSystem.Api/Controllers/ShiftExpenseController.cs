@@ -3,12 +3,15 @@ using DumpTruckManagementSystem.Application.Features.ShiftExpenseFeature.Command
 using DumpTruckManagementSystem.Application.Features.ShiftExpenseFeature.Commands.Delete;
 using DumpTruckManagementSystem.Application.Features.ShiftExpenseFeature.Commands.Update;
 using DumpTruckManagementSystem.Application.Features.ShiftExpenseFeature.Queries.Query;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DumpTruckManagementSystem.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
+
     public class ShiftExpenseController : BaseApiController<ShiftExpenseController>
     {
         [HttpGet]

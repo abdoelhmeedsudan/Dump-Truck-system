@@ -9,6 +9,7 @@
   <ItemGroup>
     <Folder Include="Features\ExpenseTypeFeature\Commands\Delete\" />
     <Folder Include="Features\ExpenseTypeFeature\Commands\Update\" />
+    <Folder Include="Features\DashboardFeature\" />
   </ItemGroup>
 
   <ItemGroup>

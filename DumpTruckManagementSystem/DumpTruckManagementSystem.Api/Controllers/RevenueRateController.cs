@@ -3,12 +3,15 @@ using DumpTruckManagementSystem.Application.Features.RevenueRateFeature.Commands
 using DumpTruckManagementSystem.Application.Features.RevenueRateFeature.Commands.Delete;
 using DumpTruckManagementSystem.Application.Features.RevenueRateFeature.Commands.Update;
 using DumpTruckManagementSystem.Application.Features.RevenueRateFeature.Queries.Query;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DumpTruckManagementSystem.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
+
     public class RevenueRateController : BaseApiController<RevenueRateController>
     {
         [HttpGet]

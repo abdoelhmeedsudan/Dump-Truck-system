@@ -1,4 +1,5 @@
 ﻿using DumpTruckManagementSystem.Application.Features.DriverFeature.Queries.Query;
+using DumpTruckManagementSystem.Application.Services;
 using DumpTruckManagementSystem.Infrastructure.Extension;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,9 @@ builder.Services.AddMediatRService();
 builder.Services.AddAutoMapperProfile();
 builder.Services.AddSwaggerOpenAPI();
 builder.Services.AddMediatRService((typeof(GetAllDriverQuery).Assembly));
+
+// تسجيل JWT Service
+builder.Services.AddScoped<IJwtService, JwtService>();
 
 
 var app = builder.Build();

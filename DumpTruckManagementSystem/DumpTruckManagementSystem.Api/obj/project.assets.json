@@ -4679,11 +4679,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\Dump\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Api\\DumpTruckManagementSystem.Api.csproj",
+      "projectUniqueName": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Api\\DumpTruckManagementSystem.Api.csproj",
       "projectName": "DumpTruckManagementSystem.Api",
-      "projectPath": "D:\\Projects\\Dump\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Api\\DumpTruckManagementSystem.Api.csproj",
+      "projectPath": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Api\\DumpTruckManagementSystem.Api.csproj",
       "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\Dump\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Api\\obj\\",
+      "outputPath": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -4705,8 +4705,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\Projects\\Dump\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Infrastructure\\DumpTruckManagementSystem.Infrastructure.csproj": {
-              "projectPath": "D:\\Projects\\Dump\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Infrastructure\\DumpTruckManagementSystem.Infrastructure.csproj"
+            "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Infrastructure\\DumpTruckManagementSystem.Infrastructure.csproj": {
+              "projectPath": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Infrastructure\\DumpTruckManagementSystem.Infrastructure.csproj"
             }
           }
         }

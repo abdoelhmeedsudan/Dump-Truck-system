@@ -281,3 +281,9 @@
     margin-right: 0;
     margin-left: 0.5rem;
 }
+
+@media print {
+    .dashboard-actions {
+        display: none !important;
+    }
+}

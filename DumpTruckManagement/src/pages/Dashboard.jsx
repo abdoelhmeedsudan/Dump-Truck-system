@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
     PieChart, Pie, Cell, AreaChart, Area
@@ -7,38 +7,113 @@ import {
     Truck, Users, DollarSign, TrendingUp,
     Activity, AlertCircle, CheckCircle, Clock
 } from 'lucide-react';
+import { dashboardApi, extractObjectFromResponse } from '../services/apiService';
 import './Dashboard.css';
 
 const Dashboard = () => {
-    // Mock Data
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [data, setData] = useState(null);
+
+    useEffect(() => {
+        loadDashboardData();
+    }, []);
+
+    async function loadDashboardData() {
+        try {
+            setLoading(true);
+            const response = await dashboardApi.getStats();
+            setData(extractObjectFromResponse(response));
+        } catch (err) {
+            console.error("Error loading dashboard data:", err);
+            setError("حدث خطأ أثناء تحميل البيانات");
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    if (loading) {
+        return (
+            <div className="dashboard-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '400px' }}>
+                <div className="loading"></div>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="dashboard-container">
+                <div className="badge badge-error" style={{ padding: '1rem' }}>{error}</div>
+            </div>
+        );
+    }
+
+    if (!data) return null;
+
+    // Map API data to UI components
     const stats = [
-        { title: 'إجمالي الشاحنات', value: '24', icon: Truck, color: 'text-blue', bg: 'bg-blue' },
-        { title: 'السائقين النشطين', value: '18', icon: Users, color: 'text-green', bg: 'bg-green' },
-        { title: 'الإيرادات الشهرية', value: '124,500 ج.م', icon: DollarSign, color: 'text-indigo', bg: 'bg-indigo' },
-        { title: 'صافي الربح', value: '42,300 ج.م', icon: TrendingUp, color: 'text-purple', bg: 'bg-purple' },
+        { title: 'إجمالي الشاحنات', value: data.stats?.totalTrucks || 0, icon: Truck, color: 'text-blue', bg: 'bg-blue' },
+        { title: 'السائقين النشطين', value: data.stats?.activeDrivers || 0, icon: Users, color: 'text-green', bg: 'bg-green' },
+        {
+            title: 'الإيرادات الشهرية',
+            value: new Intl.NumberFormat('ar-EG-u-nu-latn', { style: 'currency', currency: 'SDG' }).format(data.stats?.monthlyRevenue || 0),
+            icon: DollarSign,
+            color: 'text-indigo',
+            bg: 'bg-indigo'
+        },
+        {
+            title: 'صافي الربح',
+            value: new Intl.NumberFormat('ar-EG-u-nu-latn', { style: 'currency', currency: 'SDG' }).format(data.stats?.netProfit || 0),
+            icon: TrendingUp,
+            color: 'text-purple',
+            bg: 'bg-purple'
+        },
     ];
 
-    const revenueData = [
-        { name: 'يناير', revenue: 65000, expenses: 40000 },
-        { name: 'فبراير', revenue: 72000, expenses: 45000 },
-        { name: 'مارس', revenue: 85000, expenses: 48000 },
-        { name: 'أبريل', revenue: 92000, expenses: 51000 },
-        { name: 'مايو', revenue: 88000, expenses: 53000 },
-        { name: 'يونيو', revenue: 124500, expenses: 62000 },
-    ];
+    const revenueData = (data.revenueExpenseChart || []).map(item => ({
+        name: item.month,
+        revenue: item.revenue,
+        expenses: item.expenses
+    }));
 
     const truckStatusData = [
-        { name: 'نشط', value: 18, color: '#10b981' },
-        { name: 'صيانة', value: 4, color: '#f59e0b' },
-        { name: 'متوقف', value: 2, color: '#64748b' },
-    ];
+        { name: 'نشط', value: data.fleetStatus?.activeTrucks || 0, color: '#10b981' },
+        { name: 'صيانة', value: data.fleetStatus?.maintenanceTrucks || 0, color: '#f59e0b' },
+        { name: 'متوقف', value: data.fleetStatus?.inactiveTrucks || 0, color: '#64748b' },
+    ].filter(item => item.value > 0);
 
-    const recentActivity = [
-        { id: 1, type: 'Shift', desc: 'السائق أحمد بدأ الوردية #1023', time: 'منذ ساعتين', icon: Clock, color: 'text-blue' },
-        { id: 2, type: 'Maintenance', desc: 'تم الانتهاء من صيانة الشاحنة DT-04', time: 'منذ 4 ساعات', icon: CheckCircle, color: 'text-green' },
-        { id: 3, type: 'Alert', desc: 'الشاحنة DT-09 أبلغت عن مشكلة في المحرك', time: 'منذ 5 ساعات', icon: AlertCircle, color: 'text-red' },
-        { id: 4, type: 'Revenue', desc: 'تم استلام دفعة للموقع ب', time: 'منذ يوم واحد', icon: DollarSign, color: 'text-indigo' },
-    ];
+    const getActivityIcon = (type) => {
+        switch (type) {
+            case 'MaintenanceComplete': return { icon: CheckCircle, color: 'text-green' };
+            case 'PaymentReceipt': return { icon: DollarSign, color: 'text-indigo' };
+            case 'Alert': return { icon: AlertCircle, color: 'text-red' };
+            case 'Shift': return { icon: Clock, color: 'text-blue' };
+            default: return { icon: Activity, color: 'text-gray' };
+        }
+    };
+
+    const formatTimeAgo = (dateString) => {
+        const date = new Date(dateString);
+        const now = new Date();
+        const diffInSeconds = Math.floor((now - date) / 1000);
+
+        if (diffInSeconds < 60) return 'منذ لحظات';
+        if (diffInSeconds < 3600) return `منذ ${Math.floor(diffInSeconds / 60)} دقيقة`;
+        if (diffInSeconds < 86400) return `منذ ${Math.floor(diffInSeconds / 3600)} ساعة`;
+        return `منذ ${Math.floor(diffInSeconds / 86400)} يوم`;
+    };
+
+    const recentActivity = (data.recentActivities || []).map((activity, index) => {
+        const style = getActivityIcon(activity.activityType);
+        return {
+            id: index,
+            desc: activity.description, // using description as main text
+            sub: activity.title,
+            time: formatTimeAgo(activity.activityDate),
+            icon: style.icon,
+            color: style.color
+        };
+    });
 
     return (
         <div className="dashboard-container">
@@ -48,11 +123,11 @@ const Dashboard = () => {
                     <p className="dashboard-subtitle">مرحباً بك، إليك ملخص لما يحدث اليوم.</p>
                 </div>
                 <div className="dashboard-actions">
-                    <button className="btn-secondary">
-                        تحميل التقرير
+                    <button className="btn-secondary" onClick={loadDashboardData}>
+                        تحديث البيانات
                     </button>
-                    <button className="btn-primary">
-                        إضافة سجل جديد
+                    <button className="btn-primary" onClick={() => window.print()}>
+                        تحميل التقرير
                     </button>
                 </div>
             </div>
@@ -70,12 +145,7 @@ const Dashboard = () => {
                                 <stat.icon className={`w-6 h-6 ${stat.color}`} size={24} />
                             </div>
                         </div>
-                        <div className="stat-trend">
-                            <span className="trend-up">
-                                <TrendingUp size={16} className="ml-1" /> +12.5%
-                            </span>
-                            <span className="trend-label">عن الشهر الماضي</span>
-                        </div>
+                        {/* Trend logic could be added if API supports it */}
                     </div>
                 ))}
             </div>
@@ -104,6 +174,7 @@ const Dashboard = () => {
                                 <Tooltip
                                     contentStyle={{ backgroundColor: '#fff', borderRadius: '8px', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)', textAlign: 'right' }}
                                     itemStyle={{ color: '#1e293b' }}
+                                    formatter={(value) => new Intl.NumberFormat('en-US').format(value)}
                                 />
                                 <Area type="monotone" dataKey="revenue" stroke="#4f46e5" strokeWidth={2} fillOpacity={1} fill="url(#colorRevenue)" name="الإيرادات" />
                                 <Area type="monotone" dataKey="expenses" stroke="#ef4444" strokeWidth={2} fillOpacity={1} fill="url(#colorExpenses)" name="المصروفات" />
@@ -141,7 +212,7 @@ const Dashboard = () => {
                             {truckStatusData.map((item, index) => (
                                 <div key={index} className="legend-item">
                                     <div className="legend-color" style={{ backgroundColor: item.color }}></div>
-                                    {item.name}
+                                    <span>{item.name} ({item.value})</span>
                                 </div>
                             ))}
                         </div>
@@ -151,17 +222,21 @@ const Dashboard = () => {
                     <div className="chart-card" style={{ flex: 1 }}>
                         <h3 className="chart-title">النشاط الأخير</h3>
                         <div className="activity-list">
-                            {recentActivity.map((activity) => (
-                                <div key={activity.id} className="activity-item">
-                                    <div className={`activity-icon ${activity.color}`}>
-                                        <activity.icon size={20} />
+                            {recentActivity.length === 0 ? (
+                                <div style={{ textAlign: 'center', color: 'var(--muted)', padding: '1rem' }}>لا يوجد نشاط مؤخرًا</div>
+                            ) : (
+                                recentActivity.map((activity) => (
+                                    <div key={activity.id} className="activity-item">
+                                        <div className={`activity-icon ${activity.color}`}>
+                                            <activity.icon size={20} />
+                                        </div>
+                                        <div className="activity-content">
+                                            <p className="activity-desc" title={activity.desc}>{activity.sub} - <span style={{ fontSize: '0.85em', color: 'var(--muted)' }}>{activity.desc}</span></p>
+                                            <p className="activity-time">{activity.time}</p>
+                                        </div>
                                     </div>
-                                    <div className="activity-content">
-                                        <p className="activity-desc">{activity.desc}</p>
-                                        <p className="activity-time">{activity.time}</p>
-                                    </div>
-                                </div>
-                            ))}
+                                ))
+                            )}
                         </div>
                     </div>
                 </div>

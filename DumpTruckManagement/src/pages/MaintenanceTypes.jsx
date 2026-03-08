@@ -3,7 +3,8 @@ import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import FormField from '../components/FormField'
 import Modal from '../components/Modal'
-import { maintenanceTypeApi, extractArrayFromResponse } from '../services/apiService'
+import Pagination from '../components/Pagination'
+import { maintenanceTypeApi, extractPaginatedData, extractObjectFromResponse } from '../services/apiService'
 import '../pages/styles.css'
 
 const validationSchema = Yup.object({
@@ -19,6 +20,11 @@ export default function MaintenanceTypes() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
+  // Pagination state
+  const [currentPage, setCurrentPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(1)
+  const [pageSize] = useState(10)
+
   const initialValues = {
     name: '',
     isActive: true,
@@ -27,65 +33,41 @@ export default function MaintenanceTypes() {
 
   useEffect(() => {
     loadData()
-  }, [])
+  }, [currentPage])
 
   async function loadData() {
     try {
       setLoading(true)
       setError(null)
-      console.log('[MaintenanceTypes] Loading data...')
-      const data = await maintenanceTypeApi.getAll()
-      console.log('[MaintenanceTypes] Raw API response:', data)
-      console.log('[MaintenanceTypes] Data type:', typeof data)
-      console.log('[MaintenanceTypes] Is array?', Array.isArray(data))
-      const itemsArray = extractArrayFromResponse(data)
-      console.log('[MaintenanceTypes] Extracted array:', itemsArray)
-      console.log('[MaintenanceTypes] Items array type:', typeof itemsArray)
-      console.log('[MaintenanceTypes] Items array is array?', Array.isArray(itemsArray))
-      // Ensure itemsArray is always an array
-      const finalItems = Array.isArray(itemsArray) ? itemsArray : []
-      console.log('[MaintenanceTypes] Final items to set:', finalItems)
-      setItems(finalItems)
-    } catch (err) {
-      console.error('[MaintenanceTypes] Error loading maintenance types:', err)
-      console.error('[MaintenanceTypes] Error details:', {
-        message: err.message,
-        stack: err.stack,
-        name: err.name
+      const data = await maintenanceTypeApi.getAll({
+        pageNumber: currentPage,
+        pageSize: pageSize
       })
+      const paginatedData = extractPaginatedData(data)
+      setItems(paginatedData.items)
+      setTotalPages(paginatedData.totalPages)
+    } catch (err) {
+      console.error('Error loading maintenance types:', err)
       setError(err.message || 'حدث خطأ أثناء تحميل البيانات')
-      setItems([]) // Ensure items is always an array
     } finally {
       setLoading(false)
-      console.log('[MaintenanceTypes] Loading completed')
     }
   }
 
   async function handleSubmit(values, { resetForm, setSubmitting }) {
     try {
-      console.log('[MaintenanceTypes] Submitting form:', values)
-      console.log('[MaintenanceTypes] Editing item:', editingItem)
       setError(null)
       if (editingItem) {
-        console.log('[MaintenanceTypes] Updating item with id:', editingItem.id)
         await maintenanceTypeApi.update({ ...values, id: editingItem.id })
-        console.log('[MaintenanceTypes] Update successful')
       } else {
-        console.log('[MaintenanceTypes] Creating new item')
         await maintenanceTypeApi.create(values)
-        console.log('[MaintenanceTypes] Create successful')
       }
       await loadData()
       resetForm()
       setIsModalOpen(false)
       setEditingItem(null)
     } catch (err) {
-      console.error('[MaintenanceTypes] Error submitting form:', err)
-      console.error('[MaintenanceTypes] Submit error details:', {
-        message: err.message,
-        stack: err.stack,
-        values: values
-      })
+      console.error('Error submitting form:', err)
       setError(err.message || 'حدث خطأ أثناء الحفظ')
       setSubmitting(false)
     }
@@ -93,18 +75,28 @@ export default function MaintenanceTypes() {
 
   async function handleEdit(item) {
     try {
-      console.log('[MaintenanceTypes] Editing item:', item)
-      const fullItem = await maintenanceTypeApi.getById(item.id)
-      console.log('[MaintenanceTypes] Full item loaded:', fullItem)
-      setEditingItem(fullItem)
+      const response = await maintenanceTypeApi.getById(item.id)
+      const fullItem = extractObjectFromResponse(response)
+
+      // Ensure we have the required fields with proper defaults
+      let isActiveValue = true
+      if (fullItem?.isActive !== undefined) {
+        isActiveValue = fullItem.isActive
+      } else if (item.isActive !== undefined) {
+        isActiveValue = item.isActive
+      }
+
+      const itemToEdit = {
+        id: fullItem?.id || item.id,
+        name: fullItem?.name || item.name || '',
+        isActive: isActiveValue,
+        notes: fullItem?.notes || item.notes || ''
+      }
+
+      setEditingItem(itemToEdit)
       setIsModalOpen(true)
     } catch (err) {
-      console.error('[MaintenanceTypes] Error loading item for edit:', err)
-      console.error('[MaintenanceTypes] Edit error details:', {
-        message: err.message,
-        stack: err.stack,
-        itemId: item?.id
-      })
+      console.error('Error loading item for edit:', err)
       setError(err.message || 'حدث خطأ أثناء تحميل البيانات')
     }
   }
@@ -112,18 +104,11 @@ export default function MaintenanceTypes() {
   async function handleDelete(id) {
     if (globalThis.confirm('هل أنت متأكد من حذف هذا العنصر؟')) {
       try {
-        console.log('[MaintenanceTypes] Deleting item with id:', id)
         setError(null)
         await maintenanceTypeApi.delete(id)
-        console.log('[MaintenanceTypes] Delete successful')
         await loadData()
       } catch (err) {
-        console.error('[MaintenanceTypes] Error deleting item:', err)
-        console.error('[MaintenanceTypes] Delete error details:', {
-          message: err.message,
-          stack: err.stack,
-          itemId: id
-        })
+        console.error('Error deleting item:', err)
         setError(err.message || 'حدث خطأ أثناء الحذف')
       }
     }
@@ -140,76 +125,81 @@ export default function MaintenanceTypes() {
     setError(null)
   }
 
+  // Handler for page change
+  function handlePageChange(newPage) {
+    if (newPage >= 1 && newPage <= totalPages) {
+      setCurrentPage(newPage)
+    }
+  }
+
   return (
     <div className="page">
       <h2>أنواع الصيانة — Maintenance Types</h2>
 
       {error && (
-        <div style={{ 
-          padding: '1rem', 
-          background: 'rgba(239, 68, 68, 0.1)', 
-          color: 'var(--error)', 
-          borderRadius: '8px', 
-          marginBottom: '1rem',
-          border: '1px solid var(--error)'
-        }}>
+        <div className="badge badge-error" style={{ display: 'block', marginBottom: '1rem', padding: '1rem' }}>
           {error}
         </div>
       )}
 
       <div className="table-section">
-        <div className="table-section-title" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div className="table-section-title">
           <span>قائمة أنواع الصيانة</span>
-          <button onClick={handleAdd} disabled={loading}>إضافة نوع صيانة جديد</button>
+          <button onClick={handleAdd} disabled={loading} className="primary">
+            + إضافة نوع صيانة جديد
+          </button>
         </div>
-        {loading ? (
-          <div style={{ textAlign: 'center', padding: '3rem', color: 'var(--muted)' }}>
-            جاري التحميل...
-          </div>
-        ) : (
-          <table className="table">
-            <thead>
-              <tr>
-                <th>الاسم</th>
-                <th>الحالة</th>
-                <th>ملاحظات</th>
-                <th>الإجراءات</th>
-              </tr>
-            </thead>
-            <tbody>
-              {(() => {
-                console.log('[MaintenanceTypes] Rendering tbody, items:', items)
-                console.log('[MaintenanceTypes] Items is array?', Array.isArray(items))
-                console.log('[MaintenanceTypes] Items length:', items?.length)
-                return !Array.isArray(items) || items.length === 0 ? (
+
+        <div className="table-container">
+          {loading ? (
+            <div style={{ textAlign: 'center', padding: '3rem', color: 'var(--muted)' }}>
+              <div className="loading"></div> جاري التحميل...
+            </div>
+          ) : (
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>الاسم</th>
+                  <th>الحالة</th>
+                  <th>ملاحظات</th>
+                  <th>الإجراءات</th>
+                </tr>
+              </thead>
+              <tbody>
+                {items.length === 0 ? (
                   <tr>
                     <td colSpan="4" style={{ textAlign: 'center', padding: '3rem', color: 'var(--muted)' }}>
                       لا توجد بيانات
                     </td>
                   </tr>
                 ) : (
-                  items.map((it) => {
-                    console.log('[MaintenanceTypes] Mapping item:', it)
-                    return (
-                  <tr key={it.id}>
-                    <td>{it.name}</td>
-                    <td>{it.isActive ? 'نشط' : 'غير نشط'}</td>
-                    <td>{it.notes}</td>
-                    <td>
-                      <div style={{ display: 'flex', gap: '0.5rem' }}>
-                        <button onClick={() => handleEdit(it)} style={{ padding: '0.5rem 1rem', fontSize: '0.85rem' }}>تعديل</button>
-                        <button onClick={() => handleDelete(it.id)} style={{ padding: '0.5rem 1rem', fontSize: '0.85rem', background: 'var(--error)' }}>حذف</button>
-                      </div>
-                    </td>
-                  </tr>
-                    )
-                  })
-                )
-              })()}
-            </tbody>
-          </table>
-        )}
+                  items.map((it) => (
+                    <tr key={it.id}>
+                      <td>{it.name}</td>
+                      <td>{it.isActive ? 'نشط' : 'غير نشط'}</td>
+                      <td>{it.notes}</td>
+                      <td>
+                        <div style={{ display: 'flex', gap: '0.5rem' }}>
+                          <button onClick={() => handleEdit(it)} className="secondary" style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem' }}>تعديل</button>
+                          <button onClick={() => handleDelete(it.id)} className="secondary" style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem', color: 'var(--error)', borderColor: 'var(--error)' }}>حذف</button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
+          )}
+        </div>
       </div>
+
+      {!loading && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
+      )}
 
       <Modal
         isOpen={isModalOpen}
@@ -229,16 +219,16 @@ export default function MaintenanceTypes() {
                 <FormField name="isActive" type="checkbox" label={values.isActive ? 'نشط' : 'غير نشط'} />
               </div>
 
-              <div className="form-grid" style={{ gridTemplateColumns: '1fr' }}>
-                <FormField name="notes" type="textarea" label="ملاحظات / Notes" />
+              <div className="form-grid" style={{ gridTemplateColumns: '1fr', marginTop: '1rem' }}>
+                <FormField name="notes" type="textarea" label="ملاحظات / Notes" rows="3" />
               </div>
 
               <div className="actions">
-                <button type="submit" disabled={isSubmitting}>
-                  {editingItem ? 'حفظ التعديلات' : 'إضافة نوع صيانة'}
-                </button>
-                <button type="button" onClick={handleClose} style={{ background: 'var(--muted)' }}>
+                <button type="button" onClick={handleClose} className="secondary">
                   إلغاء
+                </button>
+                <button type="submit" disabled={isSubmitting} className="primary">
+                  {editingItem ? 'حفظ التعديلات' : 'إضافة نوع صيانة'}
                 </button>
               </div>
             </Form>

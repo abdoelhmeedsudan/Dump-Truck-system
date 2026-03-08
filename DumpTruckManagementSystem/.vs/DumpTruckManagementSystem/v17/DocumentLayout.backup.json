@@ -1,14 +1,66 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Projects\\Dump\\DumpTruckManagementSystem\\",
+  "WorkspaceRootPath": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A75F1B51-DE15-4C01-8759-142E48107309}|DumpTruckManagementSystem.Api\\DumpTruckManagementSystem.Api.csproj|d:\\projects\\dump\\dumptruckmanagementsystem\\dumptruckmanagementsystem.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A75F1B51-DE15-4C01-8759-142E48107309}|DumpTruckManagementSystem.Api\\DumpTruckManagementSystem.Api.csproj|solutionrelative:dumptruckmanagementsystem.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0DD7D7D3-AF32-4D27-8D9B-5E78E2577901}|DumpTruckManagementSystem.Application\\DumpTruckManagementSystem.Application.csproj|d:\\projects\\dump-truck-system\\dumptruckmanagementsystem\\dumptruckmanagementsystem.application\\features\\driverfeature\\queries\\handler\\getdriverbyidqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DD7D7D3-AF32-4D27-8D9B-5E78E2577901}|DumpTruckManagementSystem.Application\\DumpTruckManagementSystem.Application.csproj|solutionrelative:dumptruckmanagementsystem.application\\features\\driverfeature\\queries\\handler\\getdriverbyidqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A75F1B51-DE15-4C01-8759-142E48107309}|DumpTruckManagementSystem.Api\\DumpTruckManagementSystem.Api.csproj|d:\\projects\\dump\\dumptruckmanagementsystem\\dumptruckmanagementsystem.api\\controllers\\drivercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A75F1B51-DE15-4C01-8759-142E48107309}|DumpTruckManagementSystem.Api\\DumpTruckManagementSystem.Api.csproj|solutionrelative:dumptruckmanagementsystem.api\\controllers\\drivercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0DD7D7D3-AF32-4D27-8D9B-5E78E2577901}|DumpTruckManagementSystem.Application\\DumpTruckManagementSystem.Application.csproj|d:\\projects\\dump-truck-system\\dumptruckmanagementsystem\\dumptruckmanagementsystem.application\\features\\driverfeature\\queries\\handler\\getalldriverqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DD7D7D3-AF32-4D27-8D9B-5E78E2577901}|DumpTruckManagementSystem.Application\\DumpTruckManagementSystem.Application.csproj|solutionrelative:dumptruckmanagementsystem.application\\features\\driverfeature\\queries\\handler\\getalldriverqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DD7D7D3-AF32-4D27-8D9B-5E78E2577901}|DumpTruckManagementSystem.Application\\DumpTruckManagementSystem.Application.csproj|d:\\projects\\dump-truck-system\\dumptruckmanagementsystem\\dumptruckmanagementsystem.application\\features\\driverfeature\\queries\\query\\getdriverdtobyidquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DD7D7D3-AF32-4D27-8D9B-5E78E2577901}|DumpTruckManagementSystem.Application\\DumpTruckManagementSystem.Application.csproj|solutionrelative:dumptruckmanagementsystem.application\\features\\driverfeature\\queries\\query\\getdriverdtobyidquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DD7D7D3-AF32-4D27-8D9B-5E78E2577901}|DumpTruckManagementSystem.Application\\DumpTruckManagementSystem.Application.csproj|d:\\projects\\dump-truck-system\\dumptruckmanagementsystem\\dumptruckmanagementsystem.application\\features\\driverfeature\\queries\\query\\getalldriverquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DD7D7D3-AF32-4D27-8D9B-5E78E2577901}|DumpTruckManagementSystem.Application\\DumpTruckManagementSystem.Application.csproj|solutionrelative:dumptruckmanagementsystem.application\\features\\driverfeature\\queries\\query\\getalldriverquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DD7D7D3-AF32-4D27-8D9B-5E78E2577901}|DumpTruckManagementSystem.Application\\DumpTruckManagementSystem.Application.csproj|d:\\projects\\dump-truck-system\\dumptruckmanagementsystem\\dumptruckmanagementsystem.application\\features\\driverfeature\\commands\\update\\updatedrivercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DD7D7D3-AF32-4D27-8D9B-5E78E2577901}|DumpTruckManagementSystem.Application\\DumpTruckManagementSystem.Application.csproj|solutionrelative:dumptruckmanagementsystem.application\\features\\driverfeature\\commands\\update\\updatedrivercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DD7D7D3-AF32-4D27-8D9B-5E78E2577901}|DumpTruckManagementSystem.Application\\DumpTruckManagementSystem.Application.csproj|d:\\projects\\dump-truck-system\\dumptruckmanagementsystem\\dumptruckmanagementsystem.application\\features\\driverfeature\\commands\\update\\updatedrivercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DD7D7D3-AF32-4D27-8D9B-5E78E2577901}|DumpTruckManagementSystem.Application\\DumpTruckManagementSystem.Application.csproj|solutionrelative:dumptruckmanagementsystem.application\\features\\driverfeature\\commands\\update\\updatedrivercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DD7D7D3-AF32-4D27-8D9B-5E78E2577901}|DumpTruckManagementSystem.Application\\DumpTruckManagementSystem.Application.csproj|d:\\projects\\dump-truck-system\\dumptruckmanagementsystem\\dumptruckmanagementsystem.application\\features\\driverfeature\\commands\\delete\\deletedrivercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DD7D7D3-AF32-4D27-8D9B-5E78E2577901}|DumpTruckManagementSystem.Application\\DumpTruckManagementSystem.Application.csproj|solutionrelative:dumptruckmanagementsystem.application\\features\\driverfeature\\commands\\delete\\deletedrivercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DD7D7D3-AF32-4D27-8D9B-5E78E2577901}|DumpTruckManagementSystem.Application\\DumpTruckManagementSystem.Application.csproj|d:\\projects\\dump-truck-system\\dumptruckmanagementsystem\\dumptruckmanagementsystem.application\\features\\driverfeature\\commands\\delete\\deletedrivercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DD7D7D3-AF32-4D27-8D9B-5E78E2577901}|DumpTruckManagementSystem.Application\\DumpTruckManagementSystem.Application.csproj|solutionrelative:dumptruckmanagementsystem.application\\features\\driverfeature\\commands\\delete\\deletedrivercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DD7D7D3-AF32-4D27-8D9B-5E78E2577901}|DumpTruckManagementSystem.Application\\DumpTruckManagementSystem.Application.csproj|d:\\projects\\dump-truck-system\\dumptruckmanagementsystem\\dumptruckmanagementsystem.application\\features\\driverfeature\\commands\\create\\createdrivercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DD7D7D3-AF32-4D27-8D9B-5E78E2577901}|DumpTruckManagementSystem.Application\\DumpTruckManagementSystem.Application.csproj|solutionrelative:dumptruckmanagementsystem.application\\features\\driverfeature\\commands\\create\\createdrivercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DD7D7D3-AF32-4D27-8D9B-5E78E2577901}|DumpTruckManagementSystem.Application\\DumpTruckManagementSystem.Application.csproj|d:\\projects\\dump-truck-system\\dumptruckmanagementsystem\\dumptruckmanagementsystem.application\\features\\driverfeature\\commands\\create\\createdrivercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DD7D7D3-AF32-4D27-8D9B-5E78E2577901}|DumpTruckManagementSystem.Application\\DumpTruckManagementSystem.Application.csproj|solutionrelative:dumptruckmanagementsystem.application\\features\\driverfeature\\commands\\create\\createdrivercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DD7D7D3-AF32-4D27-8D9B-5E78E2577901}|DumpTruckManagementSystem.Application\\DumpTruckManagementSystem.Application.csproj|d:\\projects\\dump-truck-system\\dumptruckmanagementsystem\\dumptruckmanagementsystem.application\\dtos\\driverdtos\\driverparamdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0DD7D7D3-AF32-4D27-8D9B-5E78E2577901}|DumpTruckManagementSystem.Application\\DumpTruckManagementSystem.Application.csproj|solutionrelative:dumptruckmanagementsystem.application\\dtos\\driverdtos\\driverparamdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6ED6F03F-CFDB-4053-AB64-96448A46E239}|DumpTruckManagementSystem.Domain\\DumpTruckManagementSystem.Domain.csproj|d:\\projects\\dump-truck-system\\dumptruckmanagementsystem\\dumptruckmanagementsystem.domain\\configuration\\dumptruckconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6ED6F03F-CFDB-4053-AB64-96448A46E239}|DumpTruckManagementSystem.Domain\\DumpTruckManagementSystem.Domain.csproj|solutionrelative:dumptruckmanagementsystem.domain\\configuration\\dumptruckconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6ED6F03F-CFDB-4053-AB64-96448A46E239}|DumpTruckManagementSystem.Domain\\DumpTruckManagementSystem.Domain.csproj|d:\\projects\\dump-truck-system\\dumptruckmanagementsystem\\dumptruckmanagementsystem.domain\\configuration\\userroleconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6ED6F03F-CFDB-4053-AB64-96448A46E239}|DumpTruckManagementSystem.Domain\\DumpTruckManagementSystem.Domain.csproj|solutionrelative:dumptruckmanagementsystem.domain\\configuration\\userroleconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6ED6F03F-CFDB-4053-AB64-96448A46E239}|DumpTruckManagementSystem.Domain\\DumpTruckManagementSystem.Domain.csproj|d:\\projects\\dump-truck-system\\dumptruckmanagementsystem\\dumptruckmanagementsystem.domain\\configuration\\roleconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6ED6F03F-CFDB-4053-AB64-96448A46E239}|DumpTruckManagementSystem.Domain\\DumpTruckManagementSystem.Domain.csproj|solutionrelative:dumptruckmanagementsystem.domain\\configuration\\roleconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6ED6F03F-CFDB-4053-AB64-96448A46E239}|DumpTruckManagementSystem.Domain\\DumpTruckManagementSystem.Domain.csproj|d:\\projects\\dump-truck-system\\dumptruckmanagementsystem\\dumptruckmanagementsystem.domain\\configuration\\appuserconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6ED6F03F-CFDB-4053-AB64-96448A46E239}|DumpTruckManagementSystem.Domain\\DumpTruckManagementSystem.Domain.csproj|solutionrelative:dumptruckmanagementsystem.domain\\configuration\\appuserconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,27 +87,197 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Projects\\Dump\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Api\\Program.cs",
-              "RelativeDocumentMoniker": "DumpTruckManagementSystem.Api\\Program.cs",
-              "ToolTip": "D:\\Projects\\Dump\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Api\\Program.cs",
-              "RelativeToolTip": "DumpTruckManagementSystem.Api\\Program.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Title": "GetDriverByIdQueryHandler.cs",
+              "DocumentMoniker": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Queries\\Handler\\GetDriverByIdQueryHandler.cs",
+              "RelativeDocumentMoniker": "DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Queries\\Handler\\GetDriverByIdQueryHandler.cs",
+              "ToolTip": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Queries\\Handler\\GetDriverByIdQueryHandler.cs",
+              "RelativeToolTip": "DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Queries\\Handler\\GetDriverByIdQueryHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADAAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-14T13:20:13.737Z",
+              "WhenOpened": "2026-03-06T22:56:30.228Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "DriverController.cs",
-              "DocumentMoniker": "D:\\Projects\\Dump\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Api\\Controllers\\DriverController.cs",
-              "RelativeDocumentMoniker": "DumpTruckManagementSystem.Api\\Controllers\\DriverController.cs",
-              "ToolTip": "D:\\Projects\\Dump\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Api\\Controllers\\DriverController.cs",
-              "RelativeToolTip": "DumpTruckManagementSystem.Api\\Controllers\\DriverController.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAYwDAAAAAAAAAAAAAAAA==",
+              "Title": "GetAllDriverQueryHandler.cs",
+              "DocumentMoniker": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Queries\\Handler\\GetAllDriverQueryHandler.cs",
+              "RelativeDocumentMoniker": "DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Queries\\Handler\\GetAllDriverQueryHandler.cs",
+              "ToolTip": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Queries\\Handler\\GetAllDriverQueryHandler.cs",
+              "RelativeToolTip": "DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Queries\\Handler\\GetAllDriverQueryHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADcAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-14T12:11:45.28Z"
+              "WhenOpened": "2026-03-06T22:56:04.745Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GetDriverDtoByIdQuery.cs",
+              "DocumentMoniker": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Queries\\Query\\GetDriverDtoByIdQuery.cs",
+              "RelativeDocumentMoniker": "DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Queries\\Query\\GetDriverDtoByIdQuery.cs",
+              "ToolTip": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Queries\\Query\\GetDriverDtoByIdQuery.cs",
+              "RelativeToolTip": "DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Queries\\Query\\GetDriverDtoByIdQuery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-06T22:54:57.623Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GetAllDriverQuery.cs",
+              "DocumentMoniker": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Queries\\Query\\GetAllDriverQuery.cs",
+              "RelativeDocumentMoniker": "DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Queries\\Query\\GetAllDriverQuery.cs",
+              "ToolTip": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Queries\\Query\\GetAllDriverQuery.cs",
+              "RelativeToolTip": "DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Queries\\Query\\GetAllDriverQuery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-06T22:54:52.858Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UpdateDriverCommandHandler.cs",
+              "DocumentMoniker": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Commands\\Update\\UpdateDriverCommandHandler.cs",
+              "RelativeDocumentMoniker": "DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Commands\\Update\\UpdateDriverCommandHandler.cs",
+              "ToolTip": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Commands\\Update\\UpdateDriverCommandHandler.cs",
+              "RelativeToolTip": "DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Commands\\Update\\UpdateDriverCommandHandler.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAEMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-06T22:50:41.641Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UpdateDriverCommand.cs",
+              "DocumentMoniker": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Commands\\Update\\UpdateDriverCommand.cs",
+              "RelativeDocumentMoniker": "DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Commands\\Update\\UpdateDriverCommand.cs",
+              "ToolTip": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Commands\\Update\\UpdateDriverCommand.cs",
+              "RelativeToolTip": "DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Commands\\Update\\UpdateDriverCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-06T22:50:07.195Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DeleteDriverCommandHandler.cs",
+              "DocumentMoniker": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Commands\\Delete\\DeleteDriverCommandHandler.cs",
+              "RelativeDocumentMoniker": "DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Commands\\Delete\\DeleteDriverCommandHandler.cs",
+              "ToolTip": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Commands\\Delete\\DeleteDriverCommandHandler.cs",
+              "RelativeToolTip": "DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Commands\\Delete\\DeleteDriverCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-06T22:48:20.98Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DeleteDriverCommand.cs",
+              "DocumentMoniker": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Commands\\Delete\\DeleteDriverCommand.cs",
+              "RelativeDocumentMoniker": "DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Commands\\Delete\\DeleteDriverCommand.cs",
+              "ToolTip": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Commands\\Delete\\DeleteDriverCommand.cs",
+              "RelativeToolTip": "DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Commands\\Delete\\DeleteDriverCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-06T22:47:54.764Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CreateDriverCommandHandler.cs",
+              "DocumentMoniker": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Commands\\Create\\CreateDriverCommandHandler.cs",
+              "RelativeDocumentMoniker": "DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Commands\\Create\\CreateDriverCommandHandler.cs",
+              "ToolTip": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Commands\\Create\\CreateDriverCommandHandler.cs",
+              "RelativeToolTip": "DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Commands\\Create\\CreateDriverCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-06T22:45:49.051Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CreateDriverCommand.cs",
+              "DocumentMoniker": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Commands\\Create\\CreateDriverCommand.cs",
+              "RelativeDocumentMoniker": "DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Commands\\Create\\CreateDriverCommand.cs",
+              "ToolTip": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Commands\\Create\\CreateDriverCommand.cs",
+              "RelativeToolTip": "DumpTruckManagementSystem.Application\\Features\\DriverFeature\\Commands\\Create\\CreateDriverCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-06T22:42:57.131Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "DriverParamDto.cs",
+              "DocumentMoniker": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Application\\Dtos\\DriverDtos\\DriverParamDto.cs",
+              "RelativeDocumentMoniker": "DumpTruckManagementSystem.Application\\Dtos\\DriverDtos\\DriverParamDto.cs",
+              "ToolTip": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Application\\Dtos\\DriverDtos\\DriverParamDto.cs",
+              "RelativeToolTip": "DumpTruckManagementSystem.Application\\Dtos\\DriverDtos\\DriverParamDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-06T22:41:06.042Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "DumpTruckConfiguration.cs",
+              "DocumentMoniker": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Domain\\Configuration\\DumpTruckConfiguration.cs",
+              "RelativeDocumentMoniker": "DumpTruckManagementSystem.Domain\\Configuration\\DumpTruckConfiguration.cs",
+              "ToolTip": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Domain\\Configuration\\DumpTruckConfiguration.cs",
+              "RelativeToolTip": "DumpTruckManagementSystem.Domain\\Configuration\\DumpTruckConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-06T22:23:21.84Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "UserRoleConfiguration.cs",
+              "DocumentMoniker": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Domain\\Configuration\\UserRoleConfiguration.cs",
+              "RelativeDocumentMoniker": "DumpTruckManagementSystem.Domain\\Configuration\\UserRoleConfiguration.cs",
+              "ToolTip": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Domain\\Configuration\\UserRoleConfiguration.cs",
+              "RelativeToolTip": "DumpTruckManagementSystem.Domain\\Configuration\\UserRoleConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-06T22:21:26.907Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "RoleConfiguration.cs",
+              "DocumentMoniker": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Domain\\Configuration\\RoleConfiguration.cs",
+              "RelativeDocumentMoniker": "DumpTruckManagementSystem.Domain\\Configuration\\RoleConfiguration.cs",
+              "ToolTip": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Domain\\Configuration\\RoleConfiguration.cs",
+              "RelativeToolTip": "DumpTruckManagementSystem.Domain\\Configuration\\RoleConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-06T22:20:42.966Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AppUserConfiguration.cs",
+              "DocumentMoniker": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Domain\\Configuration\\AppUserConfiguration.cs",
+              "RelativeDocumentMoniker": "DumpTruckManagementSystem.Domain\\Configuration\\AppUserConfiguration.cs",
+              "ToolTip": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Domain\\Configuration\\AppUserConfiguration.cs",
+              "RelativeToolTip": "DumpTruckManagementSystem.Domain\\Configuration\\AppUserConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-06T22:19:12.807Z",
+              "EditorCaption": ""
             }
           ]
         }

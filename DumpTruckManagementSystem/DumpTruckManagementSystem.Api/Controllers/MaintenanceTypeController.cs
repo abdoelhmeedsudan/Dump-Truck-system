@@ -3,12 +3,15 @@ using DumpTruckManagementSystem.Application.Features.MaintenanceTypeFeature.Comm
 using DumpTruckManagementSystem.Application.Features.MaintenanceTypeFeature.Commands.Delete;
 using DumpTruckManagementSystem.Application.Features.MaintenanceTypeFeature.Commands.Update;
 using DumpTruckManagementSystem.Application.Features.MaintenanceTypeFeature.Queries.Query;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DumpTruckManagementSystem.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
+
     public class MaintenanceTypeController : BaseApiController<MaintenanceTypeController>
     {
         [HttpGet]

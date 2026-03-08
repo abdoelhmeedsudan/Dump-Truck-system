@@ -4134,11 +4134,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\Dump\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Domain\\DumpTruckManagementSystem.Domain.csproj",
+      "projectUniqueName": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Domain\\DumpTruckManagementSystem.Domain.csproj",
       "projectName": "DumpTruckManagementSystem.Domain",
-      "projectPath": "D:\\Projects\\Dump\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Domain\\DumpTruckManagementSystem.Domain.csproj",
+      "projectPath": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Domain\\DumpTruckManagementSystem.Domain.csproj",
       "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\Dump\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Domain\\obj\\",
+      "outputPath": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -4160,8 +4160,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\Projects\\Dump\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Shared\\DumpTruckManagementSystem.Shared.csproj": {
-              "projectPath": "D:\\Projects\\Dump\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Shared\\DumpTruckManagementSystem.Shared.csproj"
+            "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Shared\\DumpTruckManagementSystem.Shared.csproj": {
+              "projectPath": "D:\\Projects\\Dump-Truck-system\\DumpTruckManagementSystem\\DumpTruckManagementSystem.Shared\\DumpTruckManagementSystem.Shared.csproj"
             }
           }
         }

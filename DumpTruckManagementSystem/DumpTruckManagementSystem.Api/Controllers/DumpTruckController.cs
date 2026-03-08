@@ -3,12 +3,15 @@ using DumpTruckManagementSystem.Application.Features.DumpTruckFeature.Commands.C
 using DumpTruckManagementSystem.Application.Features.DumpTruckFeature.Commands.Delete;
 using DumpTruckManagementSystem.Application.Features.DumpTruckFeature.Commands.Update;
 using DumpTruckManagementSystem.Application.Features.DumpTruckFeature.Queries.Query;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DumpTruckManagementSystem.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
+
     public class DumpTruckController : BaseApiController<DumpTruckController>
     {
         [HttpGet]
