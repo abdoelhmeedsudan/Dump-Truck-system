@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DumpTruckManagementSystem.Persistence")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f56438db7021a73f105334cc08144d135b436d62")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ca281a5149975bcb66e7563f2b73c43ec55a853b")]
 [assembly: System.Reflection.AssemblyProductAttribute("DumpTruckManagementSystem.Persistence")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DumpTruckManagementSystem.Persistence")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
